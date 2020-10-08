@@ -2,16 +2,17 @@ class CommentsController < ApplicationController
   def create
     @tweet = Tweet.find(params[:tweet_id])  
     @comment = Comment.new(comment_params)
+    
     if @comment.save
       ActionCable.server.broadcast 'tweet_channel', 
       comment: @comment, user: @comment.user, time: I18n.l(@comment.created_at), tweet: @tweet
-    else
+    # else
+    #   redirect_to root_path
       # redirect_to @comment.tweet, flash: {
       #   notice: @comment,
       #   error_messages: @comment.errors.full_messages
       # }
-      flash.now[:alert] = 'メッセージを入力してください。'
-      # render template: "tweets/show"
+      # render template: "tweets/index"
     end
   end
 
