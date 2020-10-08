@@ -1,0 +1,13 @@
+<div class="p-comment__item">
+<% if @comments %>
+  <%= comment.text %>
+  <div class="p-comment__bottomLine">
+    <span><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></span>
+    <span><%= l comment.created_at %></span>
+    <% if user_signed_in? && (current_user.id == comment.user.id ) %>
+    <span><%= link_to '削除', tweet_comment_path(@tweet.id, comment.id), method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？' } %></span>
+    
+    <% end %>
+  </div>
+<% end %>
+</div>
