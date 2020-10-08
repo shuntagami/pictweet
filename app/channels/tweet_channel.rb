@@ -7,8 +7,7 @@ class TweetChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def destroy(data)
-    ActionCable.server.broadcast 'room_channel', comment: data['comment']
-    comment.destroy
+  def break(data)
+    Comment.destroy! content: data['comment']
   end
 end

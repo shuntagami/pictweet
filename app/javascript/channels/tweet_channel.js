@@ -29,16 +29,4 @@ consumer.subscriptions.create("TweetChannel", {
 
 
 
-// received(data) {
-//   console.log(data)
-//   const html = `<p>
 
-//   <strong> <a href = "/users/${data.comment.user_id}">${data.user.nickname}</a> </strong>
-//   ${data.comment.text}
-//   <span>${data.time}</span>
-//   </p>`;
-//   const comments = document.getElementById('comments');
-//   const newComment = document.getElementById('comment_text');
-//   comments.insertAdjacentHTML('afterbegin', html);
-//   newComment.value='';
-// }
